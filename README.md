@@ -20,8 +20,8 @@ This repository contains the code for reproducible experiments supporting our pa
 **Prerequisites:** Julia v1.10+ (tested on v1.10 and v1.11)
 
 ```bash
-git clone <repo_url>
-cd learning_to_trust--supp_material
+git clone https://github.com/dylan-asmar/learning_to_trust.git
+cd learning_to_trust
 ```
 
 ```julia
