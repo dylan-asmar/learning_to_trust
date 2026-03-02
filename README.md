@@ -271,7 +271,7 @@ plt = plot_sim_result!(plt, sr2, [0.0, 1.0, 2.0, 5.0, 10.0];
 
 # Generating Policies
 
-The function to generate and save policies and a function to gnereat the action value function as a matrix is in `pol_generator.jl`. To generate and save a policy, call `generate_problem_and_policy` with the problem of interest. Parameters can be passed to the SARSOP solver by keywords. Due to space limitations of the supplementary material, The RockSample(7,8) policies and action value fucntions are not provided.
+The function to generate and save policies and a function to generate the action value function as a matrix is in `pol_generator.jl`. To generate and save a policy, call `generate_problem_and_policy` with the problem of interest. Parameters can be passed to the SARSOP solver by keywords. Due to space limitations of the supplementary material, The RockSample(7,8) policies and action value fucntions are not provided.
 
 ```julia
 # Generate and save a policy
