@@ -38,7 +38,6 @@ using StaticArrays
 using Measures
 using LaTeXStrings
 using PGFPlotsX
-using Revise
 
 println("Loading source files...")
 include("src/constants.jl")

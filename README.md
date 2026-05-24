@@ -1,6 +1,6 @@
 # Learning To Trust: Bayesian Adaptation To Varying Suggester Reliability In Sequential Decision Making
 
-This repository contains the code for reproducible experiments supporting our paper *Learning To Trust: Bayesian Adaptation To Varying Suggester Reliability In Sequential Decision Making*.
+This repository contains the code for reproducible experiments supporting our paper [*Learning To Trust: Bayesian Adaptation To Varying Suggester Reliability In Sequential Decision Making*](https://arxiv.org/abs/2511.12378).
 
 
 ## Table of Contents
