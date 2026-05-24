@@ -1,0 +1,18 @@
+[deps]
+LearningToTrust = "378cd0fe-fc47-4833-b47f-8c6dda672194"
+MOMDPs = "77fc6e33-3f81-4304-8123-5a68e6b3eeb4"
+POMDPs = "a93abf59-7444-517b-a68a-c42f96afdd7d"
+POMDPTools = "7588e00f-9cae-40de-98dc-e0c70c48cdd7"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+RockSampleMOMDPProblemAT = "b5f896a8-f265-4f91-944d-aa7c46c3a6b8"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+TagMOMDPProblemAT = "d802ad91-450d-4d46-8897-0aca72b8316c"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[sources]
+LearningToTrust = {path = ".."}
+RockSampleMOMDPProblemAT = {path = "../RockSampleMOMDPwAT.jl"}
+TagMOMDPProblemAT = {path = "../TagMOMDPwAT.jl"}
+
+[compat]
+julia = "1.10"

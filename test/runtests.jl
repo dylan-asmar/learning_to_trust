@@ -1,48 +1,16 @@
-using Pkg
-
-# Change working directory to the project root so relative paths (e.g. "policies/") work.
+# Policies and other assets use paths relative to the repo root.
 const PROJECT_ROOT = dirname(@__DIR__)
 cd(PROJECT_ROOT)
-Pkg.activate(PROJECT_ROOT; io=devnull)
 
-# ── Package loading 
 using Test
-using LinearAlgebra
-using StatsBase
 using Random
-using Printf
-using JLD2
-using ProgressMeter
-
+using StatsBase
 using POMDPs
 using POMDPTools
 using MOMDPs
-
+using LearningToTrust
 using RockSampleMOMDPProblemAT
 using TagMOMDPProblemAT
-
-using Distances
-using Cairo
-using Fontconfig
-using Colors
-using Plots
-using Graphs
-using MetaGraphs
-using StaticArrays
-using Measures
-
-# ── Source files ─────────────────────────────────────────────────────────────
-# Include the three top-level simulation files; each one internally includes
-# its own dependencies (constants, utils, suggesters, …).  The type-eval file
-# also includes override_tag_tx.jl, which patches transition_y for TagMOMDPAT
-# and must be in effect before any Tag simulations are executed.
-#
-# NOTE: Julia's include() resolves paths relative to the *file being parsed*,
-# not the working directory.  We therefore build absolute paths via PROJECT_ROOT.
-const SRC = joinpath(PROJECT_ROOT, "src")
-include(joinpath(SRC, "run_sims.jl"))
-include(joinpath(SRC, "run_sims_type_eval.jl"))          # also includes override_tag_tx
-include(joinpath(SRC, "run_sims_type_eval_dynamic.jl"))
 
 # ═══════════════════════════════════════════════════════════════════════════════
 @testset verbose=true "Learning to Trust - Supplementary Material" begin

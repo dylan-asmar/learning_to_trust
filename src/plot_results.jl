@@ -1,15 +1,3 @@
-using LinearAlgebra
-using StatsBase
-using Random
-using Printf
-using JLD2
-using ProgressMeter
-using Measures
-using Plots
-
-include("utils.jl")
-
-
 function plot_sim_result(plt_sim_result::Result_Type, type_vals::Vector{Float64}; 
         label=nothing, exp_plot=true, plt_trials=nothing, color=nothing
     )

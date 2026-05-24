@@ -25,8 +25,9 @@ cd learning_to_trust
 ```
 
 ```julia
-# Activate environment and load dependencies
-julia> include("setup.jl")
+# From the repo root (first time: install deps, then load the package)
+julia> using Pkg; Pkg.activate("."); Pkg.instantiate()
+julia> using LearningToTrust
 
 # Run a basic simulation
 julia> _, π_sugg, _ = get_problem_and_policy(:tag)
@@ -34,14 +35,16 @@ julia> suggester = PolicySuggester(π_sugg, 3.0)
 julia> run_sim(:tag_inf_0_1_2_5_10; no_ask_problem=:tag, suggester=suggester, num_sims=1, visualize=false)
 ```
 
+Alternatively, `include("setup.jl")` runs `Pkg.instantiate()` and loads the package for you.
+
 **Note:** The setup process will automatically handle local package dependencies and may take a few minutes on first run due to package compilation.
 
 ### Verification
 
-To verify the setup worked correctly, you should see:
-```
-Setup complete! You can now run simulations.
-Try: _, π_sugg, _ = get_problem_and_policy(:tag)
+To verify the setup worked correctly:
+```julia
+julia> using LearningToTrust
+julia> _, π_sugg, _ = get_problem_and_policy(:tag)   # prints "Loading problem and policy...complete!"
 ```
 
 Test basic functionality:
@@ -58,18 +61,18 @@ julia> print_sim_result(result)
 
 ## Environment Setup
 
-The setup process activates the environment, adds the RockSample and Tag MOMDPs as development dependencies, loads all required packages, and includes necessary source files.
+Local domain packages (`RockSampleMOMDPwAT.jl`, `TagMOMDPwAT.jl`) are wired in via path `[sources]` in `Project.toml`, so a normal instantiate is enough.
+
+```julia
+julia> using Pkg; Pkg.activate("."); Pkg.instantiate()
+julia> using LearningToTrust
+```
+
+Or use the convenience script (activate + instantiate + load):
 
 ```julia
 julia> include("setup.jl")
 ```
-
-The setup script will:
-1. Activate the project environment
-2. Install local packages (`RockSampleMOMDPwAT.jl` and `TagMOMDPwAT.jl`) as development dependencies
-3. Install all required Julia packages
-4. Load all packages and source files
-5. Display completion message with usage example
 
 **First-time setup may take 5-10 minutes** due to package installation and compilation.
 
@@ -284,6 +287,16 @@ julia> generate_and_save_Q(:tag)
 - Policies are saved under `policies/` and loaded automatically by simulation functions.
 - Q-matrices are required whenever the problem includes an ask action.
 
+## Running Tests
+
+From the repo root (after `Pkg.instantiate()`):
+
+```julia
+julia> using Pkg; Pkg.test()
+```
+
+All tests should pass (242 tests). On Julia 1.12+, the project uses a `test/` workspace; run `Pkg.resolve()` once after cloning if `pkg> test` fails to resolve dependencies.
+
 ## Troubleshooting
 
 ### Common Issues
@@ -291,8 +304,8 @@ julia> generate_and_save_Q(:tag)
 **Package Loading Errors:**
 If you encounter errors about packages not being found (e.g., `RockSampleMOMDPProblemAT` or `TagMOMDPProblemAT`), try:
 ```julia
-# Restart Julia and run setup again
-julia> include("setup.jl")
+julia> using Pkg; Pkg.activate("."); Pkg.instantiate()
+julia> using LearningToTrust
 ```
 
 **Dependency Conflicts:**
@@ -312,7 +325,8 @@ julia> generate_and_save_Q(:tag)
 ## Code Structure
 
 ### Core Files
-- **`setup.jl`** - Environment setup and package loading
+- **`src/LearningToTrust.jl`** - Package module (`using LearningToTrust`)
+- **`setup.jl`** - Convenience: instantiate + `using LearningToTrust`
 - **`src/constants.jl`** - Problem and agent type definitions
 - **`src/utils.jl`** - Core utilities including `get_problem()` and `get_problem_and_policy()`
 - **`src/suggesters.jl`** - Suggester type definitions and implementations

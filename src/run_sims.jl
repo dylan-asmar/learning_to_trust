@@ -1,28 +1,6 @@
-
-using LinearAlgebra
-using StatsBase
-using Random
-using Printf
-using JLD2
-using ProgressMeter
-
-using POMDPs
-using POMDPTools
-using MOMDPs
-
-using RockSampleMOMDPProblemAT
-using TagMOMDPProblemAT
-
-using Distances
-
-# To visualize RockSample
-using Cairo
-using Fontconfig
-
-include("constants.jl")
-include("utils.jl")
-include("suggesters.jl")
-include("plot_results.jl")
+if !isdefined(@__MODULE__, :AGENTS)
+    include(joinpath(@__DIR__, "standalone_main.jl"))
+end
 
 function run_sim(
     problem::Symbol;
