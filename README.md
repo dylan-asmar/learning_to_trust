@@ -17,7 +17,7 @@ This repository contains the code for reproducible experiments supporting our pa
 
 ## Quick Start
 
-**Prerequisites:** Julia v1.10+ (tested on v1.10 and v1.11)
+**Prerequisites:** Julia v1.12+
 
 ```bash
 git clone https://github.com/dylan-asmar/learning_to_trust.git
@@ -295,7 +295,7 @@ From the repo root (after `Pkg.instantiate()`):
 julia> using Pkg; Pkg.test()
 ```
 
-All tests should pass (242 tests). On Julia 1.12+, the project uses a `test/` workspace; run `Pkg.resolve()` once after cloning if `pkg> test` fails to resolve dependencies.
+All tests should pass (242 tests). The project uses a `test/` workspace; run `Pkg.resolve()` once after cloning if `pkg> test` fails to resolve dependencies.
 
 ## Troubleshooting
 
